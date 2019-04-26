@@ -14,17 +14,20 @@ default rel
 ;	const godot_string *active_library_path;
 ;} godot_gdnative_init_options;
 ; assuming 8-byte alignment
-gdnopt_in_editor				dd	0x00
-gdnopt_core_api_hash				dd	0x08
-gdnopt_editor_api_hash				dd	0x10
-gdnopt_no_api_hash				dd	0x18
+gdnopt_in_editor						dd	0x00
+gdnopt_core_api_hash					dd	0x08
+gdnopt_editor_api_hash					dd	0x10
+gdnopt_no_api_hash						dd	0x18
 gdnopt_pf_report_version_mismatch		dd	0x20
 gdnopt_pf_report_loading_error			dd	0x28
-gdnopt_p_gd_native_library			dd	0x30
-gdnopt_p_api_struct				dd	0x38
+gdnopt_p_gd_native_library				dd	0x30
+gdnopt_p_api_struct						dd	0x38
 gdnopt_p_active_library_path			dd	0x40
 
 section .text
+
+api					dq	0
+api_nativescript	dq	0
 
 global dllMain
 dllMain:
@@ -43,7 +46,7 @@ dllMain:
 global godot_gdnative_init
 godot_gdnative_init:
 	;   win64: godot_gdnative_init(godot_gdnative_options *p_options_volarg@rcx)
-	;   linux: godot_gdnative_init(godot_gdnative_options *p_options_volarg@rdi)
+	;   lin64: godot_gdnative_init(godot_gdnative_options *p_options_volarg@rdi)
 	; returns: void
 
 	; prologue (rsp mod 16=8 due to return address)
@@ -58,8 +61,9 @@ godot_gdnative_init:
 	
 	; var p_options@r15=p_options_volarg@rcx (@rdi in linux64)
 	mov		r15,rcx
-	; var api@r14=p_options->api_struct
-	mov		r14,[r15+gdnopt_p_api_struct]
+	; api=p_options->api_struct
+	mov		rax,[abs r15+gdnopt_p_api_struct]
+	mov		[rel api],rax
 
 	; epilogue
 	leave
