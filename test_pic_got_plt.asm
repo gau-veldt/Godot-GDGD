@@ -62,7 +62,7 @@ godot_gdnative_init:
 	
 	; var p_options@r15=p_options_volarg@rcx (@rdi in linux64)
 	mov	r15,rcx
-	; api=p_options->api_struct
+	; api=p_options@r15->api_struct
 	mov	rax,[abs r15+gdnopt_p_api_struct]
 	mov	[rel api],rax
 
