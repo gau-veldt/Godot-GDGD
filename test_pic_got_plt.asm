@@ -30,6 +30,7 @@ api			dq	0
 api_nativescript	dq	0
 
 global dllMain
+export dllMain
 dllMain:
 	; dllMain is a win64 thing so the three args,
 	; should they be needed, will be in rcx,rdx,r8
@@ -44,6 +45,7 @@ dllMain:
 ;      return value: int/ptr via RAX,RDX
 
 global godot_gdnative_init
+export godot_gdnative_init
 godot_gdnative_init:
 
 	;   win64: godot_gdnative_init(godot_gdnative_options *p_options_volarg@rcx)
@@ -75,6 +77,7 @@ godot_gdnative_init:
 	ret
 
 global godot_gdnative_terminate
+export godot_gdnative_terminate
 godot_gdnative_terminate:
 	;   win64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rcx)
 	;   lin64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rdi)
@@ -85,6 +88,8 @@ godot_gdnative_terminate:
 	ret
 
 global godot_nativescript_init
+export godot_nativescript_init
+godot_nativescript_init:
 	;   win64: godot_nativescript_init(void *p_handle@rcx)
 	;   lin64: godot_nativescript_init(void *p_handle@rdi)
 	; returns: void
