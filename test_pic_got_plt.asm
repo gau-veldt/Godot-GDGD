@@ -80,7 +80,7 @@ godot_gdnative_terminate:
 	;   lin64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rdi)
 	; returns: void
 	xor	rax,rax
-	mov [rel api],rax
+	mov	[rel api],rax
 	mov	[rel api_nativescript],rax
 	ret
 
