@@ -14,14 +14,14 @@ default rel
 ;	const godot_string *active_library_path;
 ;} godot_gdnative_init_options;
 ; assuming 8-byte alignment
-gdnopt_in_editor						dd	0x00
-gdnopt_core_api_hash					dd	0x08
-gdnopt_editor_api_hash					dd	0x10
-gdnopt_no_api_hash						dd	0x18
+gdnopt_in_editor				dd	0x00
+gdnopt_core_api_hash				dd	0x08
+gdnopt_editor_api_hash				dd	0x10
+gdnopt_no_api_hash				dd	0x18
 gdnopt_pf_report_version_mismatch		dd	0x20
 gdnopt_pf_report_loading_error			dd	0x28
-gdnopt_p_gd_native_library				dd	0x30
-gdnopt_p_api_struct						dd	0x38
+gdnopt_p_gd_native_library			dd	0x30
+gdnopt_p_api_struct				dd	0x38
 gdnopt_p_active_library_path			dd	0x40
 
 section .text
