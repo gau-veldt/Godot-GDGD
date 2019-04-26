@@ -33,7 +33,7 @@ global dllMain
 dllMain:
 	; dllMain is a win64 thing so the three args,
 	; should they be needed, will be in rcx,rdx,r8
-	xor		eax,eax
+	xor		rax,rax
 	ret
 
 ; win64 param order: (rcx,rdx,r8,r9,... rest via stack...)
@@ -79,7 +79,7 @@ godot_gdnative_terminate:
 	;   win64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rcx)
 	;   lin64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rdi)
 	; returns: void
-	xor	eax,eax
+	xor	rax,rax
 	mov	[rel api],rax
 	mov	[rel api_nativescript],rax
 	ret
