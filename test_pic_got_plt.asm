@@ -74,3 +74,20 @@ godot_gdnative_init:
 	pop	r15
 	ret
 
+global godot_gdnative_terminate
+godot_gdnative_terminate:
+	;   win64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rcx)
+	;   lin64: godot_gdnative_terminate(godot_gdnative_terminate_options *p_options_volarg@rdi)
+	; returns: void
+	xor	eax,eax
+	mov [rel api],rax
+	mov	[rel api_nativescript],rax
+	ret
+
+global godot_nativescript_init
+	;   win64: godot_nativescript_init(void *p_handle@rcx)
+	;   lin64: godot_nativescript_init(void *p_handle@rdi)
+	; returns: void
+	
+	; nothing for now
+	ret
