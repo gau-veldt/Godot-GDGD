@@ -7,7 +7,7 @@ License: MIT (same as Godot engine)
       tools in the windows development ecosystem).  Any tools that are included (like
       assemblers) must have suitable licensing.
 
-**Note:** includes NASM which is licnesed separately via 2-clause BSD license.  I believe this to
+**Note:** may include NASM which is licnesed separately via 2-clause BSD license.  I believe this to
       be compatible to MIT so it should be usable in an exported game without restriction.
 
 **Note 2:** Temporary use of GoLink for development.  GoLink is distributable *non-commercially only*
